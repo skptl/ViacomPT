@@ -1,6 +1,28 @@
+#built application files
+*.apk
+*.ap_
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+# generated files
+bin/
+gen/
+
+# Gradle files
 .gradle
+/build
+
+# Local files
 /local.properties
 /.idea/workspace.xml
 /.idea/libraries
+.classpath
+.project
+
+
+# Mac OSX files
 .DS_Store
-/build
