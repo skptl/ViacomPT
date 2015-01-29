@@ -1,4 +1,4 @@
-#built application files
+# built application files
 *.apk
 *.ap_
 
@@ -11,18 +11,33 @@
 # generated files
 bin/
 gen/
+out/
+build/
 
-# Gradle files
-.gradle
-/build
+# Local configuration file (sdk path, etc)
+local.properties
 
-# Local files
-/local.properties
-/.idea/workspace.xml
-/.idea/libraries
+# Eclipse project files
 .classpath
 .project
 
-
 # Mac OSX files
 .DS_Store
+
+# IDEA/Android Studio project files, because
+# the project can be imported from settings.gradle
+.idea
+*.iml
+
+# Old-style IDEA project files
+*.ipr
+*.iws
+
+# Local IDEA workspace
+.idea/workspace.xml
+
+# Gradle cache
+.gradle
+
+# Sandbox stuff
+_sandbox
