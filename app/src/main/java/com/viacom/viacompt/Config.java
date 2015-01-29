@@ -7,4 +7,7 @@ public class Config {
 
     public static final String apiUrl = "";
 
+    // Debug flag
+    public static final boolean DEBUG = false;
+
 }
