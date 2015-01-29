@@ -6,7 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class VaicomMain extends ActionBarActivity {
+public class ViacomMain extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
