@@ -1,18 +1,23 @@
 package com.viacom.viacompt;
 
+import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import static com.viacom.viacompt.util.LogUtils.*;
 
-public class ViacomMain extends ActionBarActivity {
+public class ViacomMain extends Activity {
+
+    private static final String TAG = makeLogTag("ViacomMain");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vaicom_main);
+
+        LOGD(TAG, "onCreate");
 
         bindComponents();
         addListeners();
@@ -50,6 +55,12 @@ public class ViacomMain extends ActionBarActivity {
     }
 
     private class HttpAsyncTask extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected void onPreExecute() {
+
+        }
+
         @Override
         protected String doInBackground(String... urls) {
 
@@ -58,6 +69,7 @@ public class ViacomMain extends ActionBarActivity {
         // onPostExecute displays the results of the AsyncTask.
         @Override
         protected void onPostExecute(String result) {
+
         }
     }
 }

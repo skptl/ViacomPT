@@ -20,33 +20,26 @@ public class LogUtils {
         return LOG_PREFIX + str;
     }
 
-    /**
-     * Don't use this when obfuscating class names!
-     */
     public static String makeLogTag(Class cls) {
         return makeLogTag(cls.getSimpleName());
     }
 
     public static void LOGD(final String tag, String message) {
-        //noinspection PointlessBooleanExpression,ConstantConditions
         if (Config.DEBUG)
             Log.d(tag, message);
     }
 
     public static void LOGD(final String tag, String message, Throwable cause) {
-        //noinspection PointlessBooleanExpression,ConstantConditions
         if (Config.DEBUG)
             Log.d(tag, message, cause);
     }
 
     public static void LOGV(final String tag, String message) {
-        //noinspection PointlessBooleanExpression,ConstantConditions
         if (Config.DEBUG)
             Log.v(tag, message);
     }
 
     public static void LOGV(final String tag, String message, Throwable cause) {
-        //noinspection PointlessBooleanExpression,ConstantConditions
         if (Config.DEBUG)
             Log.v(tag, message, cause);
     }
