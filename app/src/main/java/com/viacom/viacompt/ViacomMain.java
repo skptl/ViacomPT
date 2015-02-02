@@ -1,16 +1,23 @@
 package com.viacom.viacompt;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
-import static com.viacom.viacompt.util.LogUtils.*;
+import com.viacom.viacompt.util.NetworkUtils;
+
+import static com.viacom.viacompt.util.LogUtils.LOGD;
+import static com.viacom.viacompt.util.LogUtils.makeLogTag;
 
 public class ViacomMain extends Activity {
 
     private static final String TAG = makeLogTag("ViacomMain");
+    private Context mContext = ViacomMain.this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,8 +26,9 @@ public class ViacomMain extends Activity {
 
         LOGD(TAG, "onCreate");
 
-        bindComponents();
-        addListeners();
+        //bindComponents();
+        //addListeners();
+        AsyncTask<String, Void, String> execute = new HttpAsyncTask().execute();
 
     }
 
@@ -56,20 +64,37 @@ public class ViacomMain extends Activity {
 
     private class HttpAsyncTask extends AsyncTask<String, Void, String> {
 
+        private ProgressDialog progressDialog;
+        
         @Override
         protected void onPreExecute() {
+            LOGD(TAG, "onPreExecute");
 
+            if(!Config.isConnected(mContext)) {
+                Toast.makeText(mContext, "No network connectivity", Toast.LENGTH_LONG).show();
+            }
+
+            progressDialog = ProgressDialog.show(mContext, "", "Loading...");
+            progressDialog.show();
         }
 
         @Override
         protected String doInBackground(String... urls) {
+            LOGD(TAG, "doInBackground");
+
+            try {
+                String jsonResponse = NetworkUtils.getDataFromUri(mContext, Config.apiUrl);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
             return null;
         }
         // onPostExecute displays the results of the AsyncTask.
         @Override
         protected void onPostExecute(String result) {
-
+            LOGD(TAG, "onPostExecute");
+            progressDialog.dismiss();
         }
     }
 }

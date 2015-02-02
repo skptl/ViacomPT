@@ -10,10 +10,10 @@ import android.net.NetworkInfo;
 public class Config {
 
     // URL for API
-    public static final String apiUrl = "";
+    public static final String apiUrl = "https://vine.co/api/timelines/users/918753190470619136";
 
     // Debug flag
-    public static final boolean DEBUG = false;
+    public static final boolean DEBUG = true;
 
     // Check for network connectivity
     public static boolean isConnected(Context context){
