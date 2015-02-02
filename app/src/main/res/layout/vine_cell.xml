@@ -6,7 +6,7 @@
     android:foreground="?android:selectableItemBackground">
 
     <ImageView
-        android:layout_width="165dp"
+        android:layout_width="100dp"
         android:layout_height="match_parent"
         android:id="@+id/thumbnail"
         android:layout_gravity="left"
@@ -16,14 +16,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginLeft="164dp"
+        android:layout_marginLeft="99dp"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
         android:gravity="center_vertical">
 
-        <!-- Video title -->
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
@@ -36,7 +35,6 @@
             android:text="@string/placeholder_lorem_ipsum"
             android:textColor="@color/body_text_1" />
 
-        <!-- Speakers -->
         <TextView
             android:id="@+id/speakers"
             android:layout_width="wrap_content"
@@ -47,7 +45,6 @@
             android:text="@string/placeholder_lorem_ipsum"
             android:textColor="@color/body_text_2" />
 
-        <!-- Description -->
         <TextView
             android:id="@+id/description"
             android:layout_width="wrap_content"
