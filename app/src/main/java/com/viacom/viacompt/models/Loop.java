@@ -3,7 +3,7 @@ package com.viacom.viacompt.models;
 /**
  * Created by Shilpan Patel on 2/2/15.
  */
-public class Loops {
+public class Loop {
 
     private Number onFire;
     private Number count;

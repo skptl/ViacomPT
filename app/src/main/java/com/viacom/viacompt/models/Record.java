@@ -6,10 +6,10 @@ import java.util.List;
 /**
  * Created by Shilpan Patel on 1/29/15.
  */
-public class Records{
+public class Record {
    	private String avatarUrl;
    	private Number blocked;
-   	private Comments comments;
+   	private Comment comment;
    	private String created;
    	private String description;
    	private List entities;
@@ -18,14 +18,14 @@ public class Records{
    	private Number following;
    	private String foursquareVenueId;
    	private Number liked;
-   	private Likes likes;
-   	private Loops loops;
+   	private Like like;
+   	private Loop loop;
    	private Number myRepostId;
    	private String permalinkUrl;
    	private Number postId;
    	private String profileBackground;
    	private Number promoted;
-   	private Reposts reposts;
+   	private Repost repost;
    	private String shareUrl;
    	private List tags;
    	private String thumbnailUrl;
@@ -50,11 +50,11 @@ public class Records{
 	public void setBlocked(Number blocked){
 		this.blocked = blocked;
 	}
- 	public Comments getComments(){
-		return this.comments;
+ 	public Comment getComment(){
+		return this.comment;
 	}
-	public void setComments(Comments comments){
-		this.comments = comments;
+	public void setComment(Comment comment){
+		this.comment = comment;
 	}
  	public String getCreated(){
 		return this.created;
@@ -104,17 +104,17 @@ public class Records{
 	public void setLiked(Number liked){
 		this.liked = liked;
 	}
- 	public Likes getLikes(){
-		return this.likes;
+ 	public Like getLike(){
+		return this.like;
 	}
-	public void setLikes(Likes likes){
-		this.likes = likes;
+	public void setLike(Like like){
+		this.like = like;
 	}
- 	public Loops getLoops(){
-		return this.loops;
+ 	public Loop getLoop(){
+		return this.loop;
 	}
-	public void setLoops(Loops loops){
-		this.loops = loops;
+	public void setLoop(Loop loop){
+		this.loop = loop;
 	}
  	public Number getMyRepostId(){
 		return this.myRepostId;
@@ -146,11 +146,11 @@ public class Records{
 	public void setPromoted(Number promoted){
 		this.promoted = promoted;
 	}
- 	public Reposts getReposts(){
-		return this.reposts;
+ 	public Repost getRepost(){
+		return this.repost;
 	}
-	public void setReposts(Reposts reposts){
-		this.reposts = reposts;
+	public void setRepost(Repost repost){
+		this.repost = repost;
 	}
  	public String getShareUrl(){
 		return this.shareUrl;

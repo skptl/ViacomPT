@@ -9,7 +9,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.viacom.viacompt.models.ApiResponse;
+import com.viacom.viacompt.models.Record;
+import com.viacom.viacompt.util.JsonUtils;
 import com.viacom.viacompt.util.NetworkUtils;
+
+import java.util.ArrayList;
 
 import static com.viacom.viacompt.util.LogUtils.LOGD;
 import static com.viacom.viacompt.util.LogUtils.makeLogTag;
@@ -23,13 +28,23 @@ public class ViacomMain extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vaicom_main);
-
         LOGD(TAG, "onCreate");
+
 
         //bindComponents();
         //addListeners();
         AsyncTask<String, Void, String> execute = new HttpAsyncTask().execute();
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        LOGD(TAG, "onResume");
+        if(!Config.isConnected(mContext)) {
+            Toast.makeText(mContext, "No network connectivity", Toast.LENGTH_LONG).show();
+            NetworkUtils.showNoConnectionDialog(mContext);
+        }
     }
 
     private void bindComponents() {
@@ -69,11 +84,6 @@ public class ViacomMain extends Activity {
         @Override
         protected void onPreExecute() {
             LOGD(TAG, "onPreExecute");
-
-            if(!Config.isConnected(mContext)) {
-                Toast.makeText(mContext, "No network connectivity", Toast.LENGTH_LONG).show();
-            }
-
             progressDialog = ProgressDialog.show(mContext, "", "Loading...");
             progressDialog.show();
         }
@@ -84,6 +94,12 @@ public class ViacomMain extends Activity {
 
             try {
                 String jsonResponse = NetworkUtils.getDataFromUri(mContext, Config.apiUrl);
+                ApiResponse apiResponse = JsonUtils.parseJsonToApiResponse(jsonResponse);
+
+                ArrayList<Record> records = apiResponse.getData().getRecords();
+
+                LOGD(TAG,"API Parsed : " + records.get(0).getAvatarUrl());
+
             } catch (Exception e) {
                 e.printStackTrace();
             }

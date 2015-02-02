@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by Shilpan Patel on 1/29/15.
  */
-public class Comments{
+public class Comment {
    	private Number anchor;
    	private String anchorStr;
    	private String backAnchor;

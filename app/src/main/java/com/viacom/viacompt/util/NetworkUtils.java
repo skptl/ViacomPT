@@ -1,6 +1,10 @@
 package com.viacom.viacompt.util;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.provider.Settings;
 import android.text.TextUtils;
 
 import com.turbomanage.httpclient.BasicHttpClient;
@@ -8,6 +12,7 @@ import com.turbomanage.httpclient.ConsoleRequestLogger;
 import com.turbomanage.httpclient.HttpResponse;
 import com.turbomanage.httpclient.RequestLogger;
 import com.viacom.viacompt.Config;
+import com.viacom.viacompt.R;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -64,6 +69,32 @@ public class NetworkUtils {
         }
 
     }
+
+    public static void showNoConnectionDialog(Context mContext) {
+        final Context ctx = mContext;
+        AlertDialog.Builder builder = new AlertDialog.Builder(ctx);
+        builder.setCancelable(true);
+        builder.setMessage(R.string.no_connection);
+        //builder.setTitle(R.string.no_connection_title);
+        builder.setPositiveButton(R.string.settings, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                ctx.startActivity(new Intent(Settings.ACTION_SETTINGS));
+            }
+        });
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                return;
+            }
+        });
+        builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            public void onCancel(DialogInterface dialog) {
+                return;
+            }
+        });
+
+        builder.show();
+    }
+
     /**
      * A type of ConsoleRequestLogger that does not log requests and responses.
      */
