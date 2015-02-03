@@ -57,7 +57,7 @@ public class VineListAdapter extends ArrayAdapter<Records> {
         Glide.with(mContext).load(record.getThumbnailUrl()).into(viewHolder.imgView);
         viewHolder.title.setText(record.getUsername());
         viewHolder.details.setText(record.getDescription());
-        String moreDetails = "Likes : " + record.getLikes().getCount() + " / "
+        String moreDetails = "\nLikes : " + record.getLikes().getCount() + " / "
                            + "Comments : " + record.getComments().getCount() + "\n"
                            + "Loops : " + record.getLoops().getCount();
         viewHolder.moreDetails.setText(moreDetails);
@@ -71,5 +71,10 @@ public class VineListAdapter extends ArrayAdapter<Records> {
         private TextView details;
         private TextView moreDetails;
 
+    }
+
+    @Override
+    public Records getItem(int position) {
+        return records.get(position);
     }
 }

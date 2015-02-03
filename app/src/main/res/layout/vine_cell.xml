@@ -1,14 +1,14 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="96dp"
+    android:layout_height="92dp"
     android:orientation="horizontal"
     android:background="#fff"
     android:foreground="?android:selectableItemBackground"
     android:padding="2dp">
 
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="match_parent"
+        android:layout_width="92dp"
+        android:layout_height="92dp"
         android:id="@+id/thumbnail"
         android:layout_gravity="left"
         android:scaleType="centerCrop" />
@@ -17,11 +17,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginLeft="99dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
+        android:layout_marginLeft="90dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         android:gravity="center_vertical">
 
         <TextView
