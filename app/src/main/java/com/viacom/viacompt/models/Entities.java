@@ -1,7 +1,6 @@
 
 package com.viacom.viacompt.models;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,7 +12,7 @@ public class Entities{
    	private List range;
    	private String title;
    	private String type;
-   	private ArrayList<String> vanityUrls;
+   	private List<String> vanityUrls;
 
  	public Number getId(){
 		return this.id;
@@ -45,10 +44,10 @@ public class Entities{
 	public void setType(String type){
 		this.type = type;
 	}
- 	public ArrayList<String> getVanityUrls(){
+ 	public List<String> getVanityUrls(){
 		return this.vanityUrls;
 	}
-	public void setVanityUrls(ArrayList<String> vanityUrls){
+	public void setVanityUrls(List<String> vanityUrls){
 		this.vanityUrls = vanityUrls;
 	}
 }

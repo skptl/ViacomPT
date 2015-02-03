@@ -5,13 +5,13 @@ import java.util.List;
 /**
  * Created by Shilpan Patel on 2/2/15.
  */
-public class Repost {
+public class Reposts {
 
     private Number nextPage;
     private Number count;
     private String backAnchor;
     private String anchorStr;
-    private List<Record> records;
+    private List records;
     private Number previousPage;
     private Number size;
     private Number anchor;

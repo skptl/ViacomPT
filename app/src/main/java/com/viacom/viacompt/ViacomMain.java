@@ -7,32 +7,38 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.viacom.viacompt.models.ApiResponse;
-import com.viacom.viacompt.models.Record;
+import com.viacom.viacompt.models.Records;
+import com.viacom.viacompt.ui.VineListAdapter;
 import com.viacom.viacompt.util.JsonUtils;
 import com.viacom.viacompt.util.NetworkUtils;
 
-import java.util.ArrayList;
+import java.util.List;
 
-import static com.viacom.viacompt.util.LogUtils.LOGD;
-import static com.viacom.viacompt.util.LogUtils.makeLogTag;
+import static com.viacom.viacompt.util.LogUtils.*;
 
 public class ViacomMain extends Activity {
 
     private static final String TAG = makeLogTag("ViacomMain");
     private Context mContext = ViacomMain.this;
+    // UI components
+    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vaicom_main);
         LOGD(TAG, "onCreate");
+        // Binding UI components
+        bindComponents();
+        // Adding event listeners
+        addListeners();
 
-
-        //bindComponents();
-        //addListeners();
         AsyncTask<String, Void, String> execute = new HttpAsyncTask().execute();
 
     }
@@ -48,11 +54,17 @@ public class ViacomMain extends Activity {
     }
 
     private void bindComponents() {
-
+        listView = (ListView) findViewById(R.id.viacom_main_list);
     }
 
     private void addListeners() {
-
+        if(listView!=null)
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                LOGD(TAG, "I am clicked : " + position);
+            }
+        });
     }
 
     @Override
@@ -91,26 +103,23 @@ public class ViacomMain extends Activity {
         @Override
         protected String doInBackground(String... urls) {
             LOGD(TAG, "doInBackground");
-
+            String jsonResponse = null;
             try {
-                String jsonResponse = NetworkUtils.getDataFromUri(mContext, Config.apiUrl);
-                ApiResponse apiResponse = JsonUtils.parseJsonToApiResponse(jsonResponse);
-
-                ArrayList<Record> records = apiResponse.getData().getRecords();
-
-                LOGD(TAG,"API Parsed : " + records.get(0).getAvatarUrl());
-
+                jsonResponse = NetworkUtils.getDataFromUri(mContext, Config.apiUrl);
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
-            return null;
+            return jsonResponse;
         }
         // onPostExecute displays the results of the AsyncTask.
         @Override
         protected void onPostExecute(String result) {
             LOGD(TAG, "onPostExecute");
             progressDialog.dismiss();
+            ApiResponse apiResponse = JsonUtils.parseJsonToApiResponse(result);
+            List<Records> records = apiResponse.getData().getRecords();
+            VineListAdapter vineListAdapter = new VineListAdapter(mContext, records);
+            listView.setAdapter(vineListAdapter);
         }
     }
 }

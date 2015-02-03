@@ -1,7 +1,7 @@
 
 package com.viacom.viacompt.models;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Shilpan Patel on 1/29/15.
@@ -13,7 +13,7 @@ public class Data{
    	private Number count;
    	private Number nextPage;
    	private String previousPage;
-   	private ArrayList<Record> records;
+   	private List<Records> records;
    	private Number size;
 
  	public Number getAnchor(){
@@ -52,10 +52,10 @@ public class Data{
 	public void setPreviousPage(String previousPage){
 		this.previousPage = previousPage;
 	}
- 	public ArrayList<Record> getRecords(){
+ 	public List<Records> getRecords(){
 		return this.records;
 	}
-	public void setRecords(ArrayList<Record> records){
+	public void setRecords(List<Records> records){
 		this.records = records;
 	}
  	public Number getSize(){
