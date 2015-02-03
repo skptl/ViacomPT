@@ -14,8 +14,7 @@ import com.viacom.viacompt.models.Records;
 
 import java.util.List;
 
-import static com.viacom.viacompt.util.LogUtils.LOGD;
-import static com.viacom.viacompt.util.LogUtils.makeLogTag;
+import static com.viacom.viacompt.util.LogUtils.*;
 
 /**
  * Created by Shilpan Patel on 2/2/15.
@@ -34,7 +33,9 @@ public class VineListAdapter extends ArrayAdapter<Records> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
         View view = convertView;
+
         if(view == null) {
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.vine_cell, null);
@@ -42,25 +43,24 @@ public class VineListAdapter extends ArrayAdapter<Records> {
             viewHolder.imgView = (ImageView) view.findViewById(R.id.thumbnail);
             viewHolder.title = (TextView) view.findViewById(R.id.title);
             viewHolder.details = (TextView) view.findViewById(R.id.details);
+            viewHolder.details.setSelected(true);
             viewHolder.moreDetails = (TextView) view.findViewById(R.id.more_details);
+            viewHolder.moreDetails.setSelected(true);
             view.setTag(viewHolder);
         }
         else {
             view = convertView;
         }
 
-        //LOGD(TAG, position+"");
         Records record = records.get(position);
         ViewHolder viewHolder = (ViewHolder) view.getTag();
         Glide.with(mContext).load(record.getThumbnailUrl()).into(viewHolder.imgView);
         viewHolder.title.setText(record.getUsername());
         viewHolder.details.setText(record.getDescription());
-        LOGD(TAG, record.getLikes().toString());
-        //String moreDetails = "Likes : " + record.getLikes().getCount() + "\n"
-        //                   + "Comments : " + record.getComments().getCount() + "\n"
-        //                   + "Revines : " + record.getLoops().getCount() + "\t"
-        //                   + "Speed : " + record.getLoops().getVelocity();
-        //viewHolder.moreDetails.setText(moreDetails);
+        String moreDetails = "Likes : " + record.getLikes().getCount() + " / "
+                           + "Comments : " + record.getComments().getCount() + "\n"
+                           + "Loops : " + record.getLoops().getCount();
+        viewHolder.moreDetails.setText(moreDetails);
 
         return view;
     }

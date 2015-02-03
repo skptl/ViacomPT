@@ -1,10 +1,10 @@
 package com.viacom.viacompt;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,7 +22,7 @@ import java.util.List;
 
 import static com.viacom.viacompt.util.LogUtils.*;
 
-public class ViacomMain extends Activity {
+public class ViacomMain extends ActionBarActivity {
 
     private static final String TAG = makeLogTag("ViacomMain");
     private Context mContext = ViacomMain.this;
@@ -62,7 +62,7 @@ public class ViacomMain extends Activity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                LOGD(TAG, "I am clicked : " + position);
+                // LOGD(TAG, "I am clicked : " + position);
             }
         });
     }
@@ -70,8 +70,9 @@ public class ViacomMain extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_vaicom_main, menu);
-        return true;
+        // getMenuInflater().inflate(R.menu.menu_vaicom_main, menu);
+        // return true;
+        return false;
     }
 
     @Override
@@ -79,12 +80,12 @@ public class ViacomMain extends Activity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        // int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        // if (id == R.id.action_settings) {
+        //      return true;
+        // }
 
         return super.onOptionsItemSelected(item);
     }

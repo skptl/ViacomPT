@@ -57,7 +57,6 @@ public class NetworkUtils {
                 LOGE(TAG, "Request for manifest returned empty data.");
                 throw new IOException("Error fetching conference data manifest: no data.");
             }
-            LOGD(TAG, "contents: " + body);
             return body;
         } else if (status == HttpURLConnection.HTTP_NOT_MODIFIED) {
             // data on the server is not newer than our data
