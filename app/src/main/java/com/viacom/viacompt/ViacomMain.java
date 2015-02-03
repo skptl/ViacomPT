@@ -117,8 +117,13 @@ public class ViacomMain extends ActionBarActivity {
             super.onPostExecute(result);
             LOGD(TAG, "onPostExecute");
             progressDialog.dismiss();
+
+            if(result==null)
+                Toast.makeText(mContext, "Error, please try again.", Toast.LENGTH_LONG).show();
+
             ApiResponse apiResponse = JsonUtils.parseJsonToApiResponse(result);
-            if(apiResponse.getSuccess()) {
+
+            if(apiResponse!=null && apiResponse.getSuccess()) {
                 List<Records> records = apiResponse.getData().getRecords();
                 VineListAdapter vineListAdapter = new VineListAdapter(mContext, records);
                 listView.setAdapter(vineListAdapter);

@@ -30,6 +30,10 @@ public class ViacomVideoActivity extends ActionBarActivity {
         setContentView(R.layout.video_playback);
 
         LOGD(TAG, "onCreate");
+
+        if(Config.isConnectedMobile(mContext))
+            Toast.makeText(mContext, "Data charges may apply.", Toast.LENGTH_LONG).show();
+        
         String videoString=getIntent().getStringExtra("videoString");
         Uri videoUri = Uri.parse(videoString);
         // Video surface
