@@ -10,7 +10,7 @@ Brief application overview:
 * Attached UI to their controllers
 * Added different util classes for instance NetworkUtils, LogUtils, ParseUtils
 * NetworkUtils could be further optimised to handle other requests
-* Parse data from API and update views accordingly.
+* Parse data from API and update views accordingly
 * Added third-party libraries : bumptech/glide, google/basic-http-client, google/gson
   - bumptech/glide : dealing with imageviews, cache
   - google/basic-http-client : make http requests to API
@@ -19,4 +19,5 @@ Brief application overview:
 * Video quality decided based on WiFi/Cellular
 * User promted to connect to network if no network found
 * Error dipalyed if something goes wrong with API data
-
+------
+* Need to add LICENSES for libraries
