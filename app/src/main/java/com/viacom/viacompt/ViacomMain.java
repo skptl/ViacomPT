@@ -51,7 +51,7 @@ public class ViacomMain extends ActionBarActivity {
     protected void onResume() {
         super.onResume();
         LOGD(TAG, "onResume");
-        if (!Config.isConnected(mContext)) {
+        if (!NetworkUtils.isConnected(mContext)) {
             Toast.makeText(mContext, "No network connectivity", Toast.LENGTH_LONG).show();
             NetworkUtils.showNoConnectionDialog(mContext);
         }
@@ -72,7 +72,7 @@ public class ViacomMain extends ActionBarActivity {
 
                         String URL = record.getVideoUrl();
 
-                        if(Config.isConnectedMobile(mContext))
+                        if(NetworkUtils.isConnectedMobile(mContext))
                             URL = record.getVideoLowURL();
 
                         // Start video

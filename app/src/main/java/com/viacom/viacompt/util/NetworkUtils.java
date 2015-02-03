@@ -4,6 +4,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.provider.Settings;
 import android.text.TextUtils;
 
@@ -11,7 +13,6 @@ import com.turbomanage.httpclient.BasicHttpClient;
 import com.turbomanage.httpclient.ConsoleRequestLogger;
 import com.turbomanage.httpclient.HttpResponse;
 import com.turbomanage.httpclient.RequestLogger;
-import com.viacom.viacompt.Config;
 import com.viacom.viacompt.R;
 
 import java.io.IOException;
@@ -31,7 +32,7 @@ public class NetworkUtils {
     // Request to GET
     public static String getDataFromUri(Context mContext, String url) throws IOException {
 
-        if(!Config.isConnected(mContext)) {
+        if(!NetworkUtils.isConnected(mContext)) {
             LOGE(TAG, "No network connectivity.");
             return null;
         }
@@ -100,5 +101,29 @@ public class NetworkUtils {
         @Override
         public void logResponse(HttpResponse res) { }
     };
+
+    // Check for network connectivity
+    public static boolean isConnected(Context context){
+        NetworkInfo info = NetworkUtils.getNetworkInfo(context);
+        return (info != null && info.isConnected());
+    }
+
+    // Check if there is any connectivity to a Wifi network
+    public static boolean isConnectedWifi(Context context){
+        NetworkInfo info = NetworkUtils.getNetworkInfo(context);
+        return (info != null && info.isConnected() && info.getType() == ConnectivityManager.TYPE_WIFI);
+    }
+
+    // Check if there is any connectivity to a mobile network
+    public static boolean isConnectedMobile(Context context){
+        NetworkInfo info = NetworkUtils.getNetworkInfo(context);
+        return (info != null && info.isConnected() && info.getType() == ConnectivityManager.TYPE_MOBILE);
+    }
+
+    // Get the network info
+    public static NetworkInfo getNetworkInfo(Context context){
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        return cm.getActiveNetworkInfo();
+    }
 
 }

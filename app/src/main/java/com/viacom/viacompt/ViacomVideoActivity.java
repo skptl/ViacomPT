@@ -31,9 +31,9 @@ public class ViacomVideoActivity extends ActionBarActivity {
 
         LOGD(TAG, "onCreate");
 
-        if(Config.isConnectedMobile(mContext))
+        if(NetworkUtils.isConnectedMobile(mContext))
             Toast.makeText(mContext, "Data charges may apply.", Toast.LENGTH_LONG).show();
-        
+
         String videoString=getIntent().getStringExtra("videoString");
         Uri videoUri = Uri.parse(videoString);
         // Video surface
@@ -64,7 +64,7 @@ public class ViacomVideoActivity extends ActionBarActivity {
     protected void onResume() {
         super.onResume();
         LOGD(TAG, "onResume");
-        if (!Config.isConnected(mContext)) {
+        if (!NetworkUtils.isConnected(mContext)) {
             Toast.makeText(mContext, "No network connectivity", Toast.LENGTH_LONG).show();
             NetworkUtils.showNoConnectionDialog(mContext);
         }
