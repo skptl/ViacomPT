@@ -19,5 +19,6 @@ Brief application overview:
 * Video quality decided based on WiFi/Cellular
 * User promted to connect to network if no network found
 * Error dipalyed if something goes wrong with API data
+
 ------
 * Need to add LICENSES for libraries
