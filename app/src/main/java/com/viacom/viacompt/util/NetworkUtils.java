@@ -24,13 +24,11 @@ import static com.viacom.viacompt.util.LogUtils.makeLogTag;
 /**
  * Created by Shilpan Patel on 2/2/15.
  */
-
-
 public class NetworkUtils {
 
     private static final String TAG = makeLogTag("NetworkUtils");
 
-
+    // Request to GET
     public static String getDataFromUri(Context mContext, String url) throws IOException {
 
         if(!Config.isConnected(mContext)) {
@@ -69,12 +67,12 @@ public class NetworkUtils {
 
     }
 
+    // Pop-Up dialog for network interface
     public static void showNoConnectionDialog(Context mContext) {
         final Context ctx = mContext;
         AlertDialog.Builder builder = new AlertDialog.Builder(ctx);
         builder.setCancelable(true);
         builder.setMessage(R.string.no_connection);
-        //builder.setTitle(R.string.no_connection_title);
         builder.setPositiveButton(R.string.settings, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 ctx.startActivity(new Intent(Settings.ACTION_SETTINGS));
@@ -94,9 +92,7 @@ public class NetworkUtils {
         builder.show();
     }
 
-    /**
-     * A type of ConsoleRequestLogger that does not log requests and responses.
-     */
+    // A type of ConsoleRequestLogger that does not log requests and responses.
     private static RequestLogger mQuietLogger = new ConsoleRequestLogger(){
         @Override
         public void logRequest(HttpURLConnection uc, Object content) throws IOException { }
