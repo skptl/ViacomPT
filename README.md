@@ -12,9 +12,9 @@ Brief application overview:
 * NetworkUtils could be further optimised to handle other requests
 * Parse data from API and update views accordingly
 * Added third-party libraries : bumptech/glide, google/basic-http-client, google/gson
-  - [bumptech/glide](https://github.com/bumptech/glide) : dealing with imageviews, cache
-  - [google/basic-http-client](https://github.com/google/iosched/tree/master/third_party/basic-http-client) : make http requests to API
-  - [google/gson](https://code.google.com/p/google-gson) : parse JSON <-> POJO
+  - [`bumptech/glide`](https://github.com/bumptech/glide) : dealing with imageviews, cache
+  - [`google/basic-http-client`](https://github.com/google/iosched/tree/master/third_party/basic-http-client) : make http requests to API
+  - [`google/gson`](https://code.google.com/p/google-gson) : parse JSON <-> POJO
 * API endpoints, debug flags can be found in Config.java
 * Video quality decided based on WiFi/Cellular
 * User promted to connect to network if no network found
