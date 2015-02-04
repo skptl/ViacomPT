@@ -21,4 +21,4 @@ Brief application overview:
 * Error dipalyed if something goes wrong with API data
 
 ------
-* Need to add LICENSES for libraries
+Need to add LICENSES for libraries
